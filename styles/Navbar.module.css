@@ -1,0 +1,9 @@
+.imageStyle {
+  width: 100px;
+  height: auto;
+}
+.active {
+  border-bottom: 2px solid #005487;
+}
+.inactive {
+}
