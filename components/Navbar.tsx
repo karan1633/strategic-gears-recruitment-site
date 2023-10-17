@@ -37,7 +37,11 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse mx-5" id="navbarNavAltMarkup">
+        <div
+          className="collapse navbar-collapse"
+          id="navbarNavAltMarkup"
+          style={{ marginLeft: "72px" }}
+        >
           <div className="navbar-nav">
             <Link
               href="/candidates"

@@ -1,0 +1,114 @@
+.vertical_tabs {
+  display: flex;
+  /* flex-direction: column; */
+}
+.main_tab {
+  font-size: 20px;
+  /* font-weight: 600; */
+}
+.tab_links {
+  width: 350px;
+  background-color: #f1f1f1;
+  /* background-color: #f00; */
+}
+.nested_tab_main_div {
+  /* margin-top: -9px; */
+  /* margin-top: 8px; */
+}
+.tab_content_main {
+  background-color: #fff;
+}
+.tab_link {
+  font-size: 16px;
+  padding: 16px 10px;
+  cursor: pointer;
+}
+.nested_tabs_container {
+  position: relative;
+  border: 1px solid #ccc;
+}
+.nested_tabs_container:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  bottom: -8px; /* Adjust the size of the triangle by changing this value */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px 8px 0;
+  border-style: solid;
+  border-color: #ccc transparent;
+}
+.bg_color {
+  color: #000 !important;
+  background-color: #ccc !important;
+  padding: 0.5em 0.4em !important;
+}
+.main_tab_active {
+  font-weight: bolder;
+  background-color: #fff !important;
+}
+.main_tab_stale {
+  font-weight: 700;
+  /* font-weight: 700; */
+  /* color: gray; */
+  opacity: 0.5;
+}
+.active {
+  font-weight: bold;
+  color: #000;
+  border-right: 3px solid #1292ee;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 7px; */
+  /* background-color: #fff !important; */
+}
+.inactive_nested_tab {
+  opacity: 0.5;
+}
+.tab_content_container {
+  background-color: #fff !important;
+  /* margin-top: -9px; */
+}
+.tab_content {
+  /* display: none; */
+  /* padding: 20px; */
+  padding: 0px 20px;
+}
+
+.scrollable_content {
+  height: 600px;
+  overflow-y: auto;
+}
+
+.vertical_tabs {
+  height: 300px;
+}
+@media only screen and (max-width: 1024px) {
+  .nested_tabs_container {
+    /* width: 100px; */
+  }
+  .nav_pills_main_div {
+    /* height: 300px; */
+    /* overflow-y: scroll; */
+  }
+}
+/* @media only screen and (min-width: 375px) {
+  .nested_tabs_container {
+    width: 345px;
+  }
+} */
+@media only screen and (max-width: 768px) {
+  .nav_pills_main_div {
+    height: 275px;
+    overflow-y: auto;
+  }
+}
+@media only screen and (min-width: 769px) {
+  .nav_pills_main_div {
+    height: 475px;
+    overflow-y: auto;
+  }
+}
+/* @media only screen and (min-width: 1024px) {
+  .nested_tabs_container {
+    width: 199px;
+  }
+} */
