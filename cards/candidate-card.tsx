@@ -7,14 +7,14 @@ const CandidateCard = ({ content }: any) => {
         return (
           <>
             <div className=" mt-3 mb-3">
-              <div className="d-flex justify-content-between align-items-center mx-3 mt-2">
+              <div className="d-flex justify-content-between align-items-center mt-2">
                 <div className="d-flex justify-content-between align-items-center">
-                  <div className="mx-3">
+                  <div className="">
                     <p className={`${styles.card_content} ${styles.f7}`}>
-                      {content_card?.name}
+                      {content_card?.applicant_name}
                     </p>
                   </div>
-                  <div className="mx-3">
+                  <div className="ml-3">
                     <p className={`${styles.card_content}`}>
                       {content_card?.designation}
                     </p>
@@ -34,7 +34,7 @@ const CandidateCard = ({ content }: any) => {
                 )}
               </div>
 
-              <div className="mx-5">
+              <div className="">
                 <p className={`${styles.card_content} ${styles.card_p}`}>
                   {content_card?.description}
                 </p>

@@ -6,11 +6,7 @@
   font-size: 20px;
   /* font-weight: 600; */
 }
-.tab_links {
-  width: 350px;
-  background-color: #f1f1f1;
-  /* background-color: #f00; */
-}
+
 .nested_tab_main_div {
   /* margin-top: -9px; */
   /* margin-top: 8px; */
@@ -103,7 +99,7 @@
 }
 @media only screen and (min-width: 769px) {
   .nav_pills_main_div {
-    height: 475px;
+    height: 600px;
     overflow-y: auto;
   }
 }

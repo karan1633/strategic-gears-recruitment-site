@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light ">
         <Link href="/candidates" className="">
           <Image
             src="/assets/images/SG_logo.svg"
@@ -38,7 +38,7 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div
-          className="collapse navbar-collapse"
+          className="collapse navbar-collapse "
           id="navbarNavAltMarkup"
           style={{ marginLeft: "72px" }}
         >
@@ -62,6 +62,10 @@ const Navbar = () => {
               <span className={``}>Jobs</span>
             </Link>
           </div>
+        </div>
+
+        <div>
+          <button className="btn btn-primary mr-3">Logout</button>
         </div>
       </nav>
     </>
