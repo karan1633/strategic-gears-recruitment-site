@@ -3,11 +3,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import LoginAPI from "@/services/api/auth/login";
 import styles from "../styles/Login.module.css";
+import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { storeToken } from "@/store/slices/token-slice";
 const Login = () => {
   const [passwordHidden, setPasswordHidden] = useState(true);
+  const router = useRouter();
   const dispatch = useDispatch();
   const LoginValidationSchema = Yup.object().shape({
     usr: Yup.string().email("Invalid email").required("Email is required"),
@@ -34,6 +36,7 @@ const Login = () => {
         // Close the notification after 3 seconds
       });
       dispatch(storeToken(loginUser.data.message.data.access_token));
+      router.push("/candidates");
     } else {
       toast.error(
         "Login failed. Please check your credentials and try again.",

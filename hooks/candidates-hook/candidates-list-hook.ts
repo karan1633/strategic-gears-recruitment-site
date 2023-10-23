@@ -1,4 +1,4 @@
-import CandidatesListAPI from "@/services/api/candidates-list/candidates-list-api";
+import CandidatesListAPI from "@/services/api/candidates-list-api";
 import { get_access_token } from "@/store/slices/token-slice";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";

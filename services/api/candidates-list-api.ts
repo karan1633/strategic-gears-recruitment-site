@@ -14,7 +14,7 @@ const CandidatesListAPI = async (token: any) => {
   const params = `?version=${version}&method=${method}&entity=${entity}`;
 
   const getHeaders = headerGenerator(token);
-  console.log("headers", getHeaders.headers);
+  // console.log("headers", getHeaders.headers);
 
   await axios
     .get(`${CONSTANTS.API_BASE_URL}${CONSTANTS.API_MANDATE_PARAMS}${params}`, {
@@ -22,7 +22,7 @@ const CandidatesListAPI = async (token: any) => {
       timeout: TIMEOUT,
     })
     .then((res) => {
-      console.log("candidate listing api successfull", res);
+      // console.log("candidate listing api successfull", res);
       response = res;
     })
     .catch((err) => {
