@@ -1,27 +1,14 @@
-import { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
-import { InterviewData } from "../../../datasets/interview-dataset";
-import styles from "../../../styles/Candidate-Detail.module.css";
-
-const CandidateDetail = () => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const handleSubmit = () => {};
+import { InterviewData } from "../datasets/interview-dataset";
+import styles from "../styles/Candidate-Detail.module.css";
+const OffCanvasComponent = ({ show, handleClose, handleSubmit }: any) => {
+  //   console.log("offcanvas");
   return (
-    <div>
-      <>
-        <Button variant="primary" onClick={handleShow}>
-          Launch
-        </Button>
-
+    <>
+      <div className="sidebar-modal">
         <Offcanvas
           show={show}
           onHide={handleClose}
@@ -124,28 +111,39 @@ const CandidateDetail = () => {
                                               id={`${interview_stage.label}-feedback-data`}
                                             >
                                               <thead>
-                                                <tr className={``}>
-                                                  <th>Interviewer Name</th>
-                                                  <th>Interviewer Rating</th>
-                                                  <th>Interviewer Status</th>
+                                                <tr
+                                                  className={`${styles.nested_table_div}`}
+                                                >
+                                                  <th className={``}>
+                                                    Interviewer Name
+                                                  </th>
+                                                  <th className={``}>
+                                                    Interviewer Rating
+                                                  </th>
+                                                  <th className={``}>
+                                                    Interviewer Status
+                                                  </th>
                                                 </tr>
                                               </thead>
                                               <tbody>
                                                 {interview_stage?.feedback_data?.map(
                                                   (feedback: any, idx: any) => {
                                                     return (
-                                                      <tr key={idx}>
-                                                        <td className="text-center">
+                                                      <tr
+                                                        key={idx}
+                                                        className={`${styles.nested_feedback_div}`}
+                                                      >
+                                                        <td className="">
                                                           {
                                                             feedback.interviewer_name
                                                           }
                                                         </td>
-                                                        <td className="text-center">
+                                                        <td className="">
                                                           {
                                                             feedback.interviewer_rating
                                                           }
                                                         </td>
-                                                        <td className="text-center">
+                                                        <td className="">
                                                           {
                                                             feedback.interview_result
                                                           }
@@ -173,9 +171,9 @@ const CandidateDetail = () => {
             </div>
           </Offcanvas.Body>
         </Offcanvas>
-      </>
-    </div>
+      </div>
+    </>
   );
 };
 
-export default CandidateDetail;
+export default OffCanvasComponent;

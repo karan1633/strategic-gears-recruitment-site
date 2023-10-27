@@ -5,7 +5,7 @@ import CandidateCard from "@/cards/candidate-card";
 import useCandidatesHook from "@/hooks/candidates-hook/candidates-list-hook";
 
 const CandidatesListing = () => {
-  const { candidatesList } = useCandidatesHook();
+  const { token, interviewRoundsList, candidatesList } = useCandidatesHook();
   const [activeMainTab, setActiveMainTab] = useState(0);
   const [activeNestedTab, setActiveNestedTab] = useState(0);
   const mainTabRef: any = useRef(0);
@@ -87,7 +87,7 @@ const CandidatesListing = () => {
             </div>
             {/* <div className={`  ${styles.tab_content_container}`}> */}
             <div
-              className={`tab-content col-12 col-lg-10 col-md-12  ${styles.scrollable_content} ${styles.tab_content}`}
+              className={`tab-content col-12 col-lg-10 col-md-12 ${styles.scrollable_content} ${styles.tab_content}`}
             >
               {candidatesList?.length > 0 &&
                 candidatesList[activeMainTab].nested_tabs.map(
@@ -99,13 +99,17 @@ const CandidatesListing = () => {
                       }`}
                     >
                       <div className={``} ref={contentRef}>
-                        <CandidateCard content={nested_tab_content.content} />
+                        <CandidateCard
+                          token={token}
+                          status={nested_tab_content.label}
+                          content={nested_tab_content.content}
+                          interviewRoundsList={interviewRoundsList}
+                        />
                       </div>
                     </div>
                   )
                 )}
             </div>
-            {/* </div> */}
           </div>
         </div>
       </div>
