@@ -8,6 +8,7 @@ const CandidatesListing = () => {
   const {
     token,
     interviewRoundsList,
+    skillsList,
     candidatesList,
     updateList,
     setUpdateList,
@@ -114,7 +115,9 @@ const CandidatesListing = () => {
                         <CandidateCard
                           token={token}
                           activeMainTab={candidatesList[activeMainTab]}
+                          activeNestedTab={candidatesList[activeMainTab].nested_tabs[activeNestedTab]}
                           status={nested_tab_content.label}
+                          skillsList={skillsList}
                           content={nested_tab_content.content}
                           interviewRoundsList={interviewRoundsList}
                           updateCandidatesList={updateCandidatesList}

@@ -77,6 +77,23 @@
 .vertical_tabs {
   height: 300px;
 }
+
+.fas {
+  color: gold; 
+}
+
+.fas_half {
+  position: relative;
+  color: gold;
+}
+
+.fas-half:before {
+  content: '\f006'; 
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  color: #ccc; 
+}
 @media only screen and (max-width: 1024px) {
   .nested_tabs_container {
     /* width: 100px; */

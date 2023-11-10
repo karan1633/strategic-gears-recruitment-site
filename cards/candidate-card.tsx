@@ -2,10 +2,13 @@ import { useState, useRef } from 'react';
 import styles from '../styles/candidate-cards.module.css';
 import OffCanvasComponent from '@/components/Offcanvas';
 import InterviewModal from '@/components/interview-modal';
+import InterviewFeedbackModal from '@/components/interview-feedback-modal';
 
 const CandidateCard = ({
   token,
   activeMainTab,
+  skillsList,
+  activeNestedTab,
   status,
   content,
   interviewRoundsList,
@@ -13,6 +16,8 @@ const CandidateCard = ({
 }: any) => {
   const [show, setShow] = useState(false);
   const [showInterviewModal, setShowInterviewModal] = useState(false);
+  const [showInterviewFeedbackModal, setShowInterviewFeedbackModal] =
+    useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -24,14 +29,21 @@ const CandidateCard = ({
     setShowInterviewModal(true);
     saveCandidateEmailRef.current = email;
   };
+  const handleInterviewFeedbackModalOpen = () => {
+    setShowInterviewFeedbackModal(true);
+  };
 
   const handleInterviewModalClose = () => {
     setShowInterviewModal(false);
+  };
+  const handleInterviewFeedbackModalClose = () => {
+    setShowInterviewFeedbackModal(false);
   };
 
   const handleSubmit = () => {};
 
   console.log('activeMainTab', activeMainTab);
+  console.log('activeNestedTab', activeNestedTab.label);
 
   return (
     <div>
@@ -70,9 +82,7 @@ const CandidateCard = ({
                   <button
                     type="button"
                     className="btn btn-outline-primary me-5"
-                    onClick={() =>
-                      handleInterviewModalOpen(content_card?.email_id)
-                    }
+                    onClick={() => handleInterviewFeedbackModalOpen()}
                   >
                     Add Interview Feedback
                   </button>
@@ -109,6 +119,15 @@ const CandidateCard = ({
           interviewRoundsList={interviewRoundsList}
           candidateMailID={saveCandidateEmailRef.current}
           updateCandidatesList={updateCandidatesList}
+        />
+      )}
+      {showInterviewFeedbackModal && (
+        <InterviewFeedbackModal
+          token={token}
+          show={showInterviewFeedbackModal}
+          handleClose={handleInterviewFeedbackModalClose}
+          activeNestedTabLabel={activeNestedTab.label}
+          skillsList={skillsList}
         />
       )}
     </div>

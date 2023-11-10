@@ -4,12 +4,14 @@ import { get_access_token } from '@/store/slices/token-slice';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import SkillsListAPI from '@/services/api/skills-list-api';
 
 const useCandidatesHook = () => {
   const router = useRouter();
   const { filter } = router.query;
   const [candidatesList, setCandidatesList] = useState<any>([]);
   const [interviewRoundsList, setInterviewRoundsList] = useState<any>([]);
+  const [skillsList, setSkillsList] = useState<any>([]);
   const { token }: any = useSelector(get_access_token);
 
   const [updateList, setUpdateList] = useState(0);
@@ -40,13 +42,28 @@ const useCandidatesHook = () => {
     }
   };
 
+  const getSkillsList = async () =>
+  {
+    const skillsListData = await SkillsListAPI(token);
+    if(skillsListData?.status === 200 && skillsListData?.data?.message?.msg === 'success')
+    {
+      setSkillsList([...skillsListData?.data?.message?.data]);
+    } 
+    else
+    {
+      setSkillsList([]);
+    }
+  }
+
   useEffect(() => {
     getCandidatesList();
     getInterviewRoundsList();
+    getSkillsList();
   }, [router, updateList]);
   return {
     token,
     interviewRoundsList,
+    skillsList,
     candidatesList,
     updateList,
     setUpdateList,
