@@ -1,13 +1,15 @@
-import { useState, useRef } from "react";
-import styles from "../styles/candidate-cards.module.css";
-import OffCanvasComponent from "@/components/Offcanvas";
-import InterviewModal from "@/components/interview-modal";
+import { useState, useRef } from 'react';
+import styles from '../styles/candidate-cards.module.css';
+import OffCanvasComponent from '@/components/Offcanvas';
+import InterviewModal from '@/components/interview-modal';
 
 const CandidateCard = ({
   token,
+  activeMainTab,
   status,
   content,
   interviewRoundsList,
+  updateCandidatesList,
 }: any) => {
   const [show, setShow] = useState(false);
   const [showInterviewModal, setShowInterviewModal] = useState(false);
@@ -18,6 +20,7 @@ const CandidateCard = ({
   const saveCandidateEmailRef = useRef(null);
 
   const handleInterviewModalOpen = (email: any) => {
+    console.log(email);
     setShowInterviewModal(true);
     saveCandidateEmailRef.current = email;
   };
@@ -27,6 +30,8 @@ const CandidateCard = ({
   };
 
   const handleSubmit = () => {};
+
+  console.log('activeMainTab', activeMainTab);
 
   return (
     <div>
@@ -38,7 +43,7 @@ const CandidateCard = ({
                 <div className="d-flex justify-content-between align-items-center">
                   <div className="">
                     <p
-                      className={`${styles.card_content} ${styles.f7}`}
+                      className={`${styles.card_content} ${styles.f6}`}
                       onClick={handleShow}
                     >
                       {content_card?.applicant_name}
@@ -50,7 +55,8 @@ const CandidateCard = ({
                     </p>
                   </div>
                 </div>
-                {status === "Open" ? (
+                {activeMainTab?.main_tab === 'Applicant' &&
+                status === 'Open' ? (
                   <button
                     type="button"
                     className="btn btn-outline-primary me-5"
@@ -60,10 +66,20 @@ const CandidateCard = ({
                   >
                     Schedule
                   </button>
+                ) : activeMainTab?.main_tab === 'Interview' ? (
+                  <button
+                    type="button"
+                    className="btn btn-outline-primary me-5"
+                    onClick={() =>
+                      handleInterviewModalOpen(content_card?.email_id)
+                    }
+                  >
+                    Add Interview Feedback
+                  </button>
                 ) : (
                   <div className="me-5">
                     <p className={`${styles.card_content}`}>
-                      <i className="fas fa-calendar-alt"></i>{" "}
+                      <i className="fas fa-calendar-alt"></i>{' '}
                       {content_card?.date}
                     </p>
                   </div>
@@ -92,6 +108,7 @@ const CandidateCard = ({
           handleClose={handleInterviewModalClose}
           interviewRoundsList={interviewRoundsList}
           candidateMailID={saveCandidateEmailRef.current}
+          updateCandidatesList={updateCandidatesList}
         />
       )}
     </div>

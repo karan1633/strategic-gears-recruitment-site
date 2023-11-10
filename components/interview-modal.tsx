@@ -6,13 +6,18 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import SetInterviewAPI from '@/services/api/set-interview-api';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
+import CandidatesListAPI from '@/services/api/candidates-list-api';
 function InterviewModal({
   token,
   show,
   handleClose,
   interviewRoundsList,
   candidateMailID,
+  updateCandidatesList,
 }: any) {
+  const router = useRouter();
+  const { job } = router.query;
   const [interviewData, setInterviewData] = useState({
     interview_round: '',
     scheduled_on: '',
@@ -60,8 +65,8 @@ function InterviewModal({
     ) {
       toast.success('Interview has been scheduled', {
         autoClose: 3000,
-        // Close the notification after 3 seconds
       });
+      updateCandidatesList();
     } else {
       toast.error(
         "Couldn't schedule interview right now. Please try in sometime.",

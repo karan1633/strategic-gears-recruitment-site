@@ -1,11 +1,17 @@
-import { useState, useRef } from "react";
-import { dataSet } from "../../datasets/candidate-dataset";
-import styles from "../../styles/vertical-tabs.module.css";
-import CandidateCard from "@/cards/candidate-card";
-import useCandidatesHook from "@/hooks/candidates-hook/candidates-list-hook";
+import { useState, useRef } from 'react';
+import { dataSet } from '../../datasets/candidate-dataset';
+import styles from '../../styles/vertical-tabs.module.css';
+import CandidateCard from '@/cards/candidate-card';
+import useCandidatesHook from '@/hooks/candidates-hook/candidates-list-hook';
 
 const CandidatesListing = () => {
-  const { token, interviewRoundsList, candidatesList } = useCandidatesHook();
+  const {
+    token,
+    interviewRoundsList,
+    candidatesList,
+    updateList,
+    setUpdateList,
+  } = useCandidatesHook();
   const [activeMainTab, setActiveMainTab] = useState(0);
   const [activeNestedTab, setActiveNestedTab] = useState(0);
   const mainTabRef: any = useRef(0);
@@ -18,9 +24,15 @@ const CandidatesListing = () => {
   const handleTabClick = (index: number) => {
     setActiveNestedTab(index);
   };
+
+  const updateCandidatesList = () => {
+    setUpdateList(updateList + 1);
+  };
+
+  console.log('candidates list', candidatesList);
   return (
     <>
-      <div className="" style={{ backgroundColor: "#f8f9fa" }}>
+      <div className="" style={{ backgroundColor: '#f8f9fa' }}>
         <nav>
           <div className="nav nav-tabs" id="nav-tab" role="tablist">
             {candidatesList?.length > 0 &&
@@ -41,7 +53,7 @@ const CandidatesListing = () => {
                   aria-selected={`${activeMainTab === index ? true : false}`}
                   onClick={() => handleMainTabIndex(index)}
                 >
-                  {tab.main_tab}{" "}
+                  {tab.main_tab}{' '}
                   <span className="badge badge-primary mx-2">{tab.count}</span>
                 </button>
               ))}
@@ -51,7 +63,7 @@ const CandidatesListing = () => {
       <div className={`tab-content ${styles.tab_content_main}`}>
         <div
           className={`tab-pane ${
-            activeMainTab === mainTabRef.current ? "active" : ""
+            activeMainTab === mainTabRef.current ? 'active' : ''
           }`}
         >
           <div className="row">
@@ -62,7 +74,7 @@ const CandidatesListing = () => {
                 className={` flex-column nav-pills ${styles.nav_pills_main_div}`}
               >
                 {candidatesList?.length > 0 &&
-                  candidatesList[activeMainTab].nested_tabs.map(
+                  candidatesList[activeMainTab]?.nested_tabs.map(
                     (nested_tab: any, index: number) => (
                       <div
                         key={index}
@@ -95,15 +107,17 @@ const CandidatesListing = () => {
                     <div
                       key={index}
                       className={`tab-pane  ${
-                        activeNestedTab === index ? "active" : ""
+                        activeNestedTab === index ? 'active' : ''
                       }`}
                     >
                       <div className={``} ref={contentRef}>
                         <CandidateCard
                           token={token}
+                          activeMainTab={candidatesList[activeMainTab]}
                           status={nested_tab_content.label}
                           content={nested_tab_content.content}
                           interviewRoundsList={interviewRoundsList}
+                          updateCandidatesList={updateCandidatesList}
                         />
                       </div>
                     </div>
