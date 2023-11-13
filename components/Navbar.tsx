@@ -1,17 +1,34 @@
-import Image from "next/image";
-import Link from "next/link";
-import navStyles from "../styles/Navbar.module.css";
-import { useRef, useState } from "react";
+import Image from 'next/image';
+import Link from 'next/link';
+import navStyles from '../styles/Navbar.module.css';
+import { useRouter } from 'next/router';
+
+import { useRef, useState } from 'react';
+import { toast } from 'react-toastify';
+import LogoutAPI from '@/services/api/auth/logout';
 const Navbar = () => {
   const imageStyle = {
-    width: "180px",
-    height: "62px !important",
+    width: '180px',
+    height: '62px !important',
   };
+
+  const router = useRouter();
 
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
   const handleChangeOfTabIndex = (idx: number) => {
     setActiveTabIndex(idx);
+  };
+
+  const handleLogout = async () => {
+    const logoutUser = await LogoutAPI();
+    if (logoutUser?.status === 200) {
+      router.push('/login');
+    } else {
+      toast.error('Something went wrong. Please try back in sometime', {
+        autoClose: 5000, // Close the notification after 5 seconds
+      });
+    }
   };
 
   return (
@@ -40,7 +57,7 @@ const Navbar = () => {
         <div
           className="collapse navbar-collapse "
           id="navbarNavAltMarkup"
-          style={{ marginLeft: "72px" }}
+          style={{ marginLeft: '72px' }}
         >
           <div className="navbar-nav">
             <Link
@@ -65,7 +82,12 @@ const Navbar = () => {
         </div>
 
         <div>
-          <button className="btn btn-primary mr-3">Logout</button>
+          <button
+            className="btn btn-primary mr-3"
+            onClick={() => handleLogout()}
+          >
+            Logout
+          </button>
         </div>
       </nav>
     </>
