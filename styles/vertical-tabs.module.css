@@ -24,7 +24,7 @@
   border: 1px solid #ccc;
 }
 .nested_tabs_container:not(:last-child)::before {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -8px; /* Adjust the size of the triangle by changing this value */
   left: 50%;
@@ -79,7 +79,7 @@
 }
 
 .fas {
-  color: gold; 
+  color: gold;
 }
 
 .fas_half {
@@ -88,11 +88,15 @@
 }
 
 .fas-half:before {
-  content: '\f006'; 
+  content: '\f006';
   position: absolute;
   top: 0;
   overflow: hidden;
-  color: #ccc; 
+  color: #ccc;
+}
+.no_data_text {
+  font-size: 18px;
+  color: #1292ee;
 }
 @media only screen and (max-width: 1024px) {
   .nested_tabs_container {

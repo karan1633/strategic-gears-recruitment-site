@@ -23,14 +23,16 @@ const CandidateCard = ({
   const handleShow = () => setShow(true);
 
   const saveCandidateEmailRef = useRef(null);
+  const saveInterviewRef = useRef(null);
 
   const handleInterviewModalOpen = (email: any) => {
     console.log(email);
     setShowInterviewModal(true);
     saveCandidateEmailRef.current = email;
   };
-  const handleInterviewFeedbackModalOpen = () => {
+  const handleInterviewFeedbackModalOpen = (name: any) => {
     setShowInterviewFeedbackModal(true);
+    saveInterviewRef.current = name;
   };
 
   const handleInterviewModalClose = () => {
@@ -42,8 +44,8 @@ const CandidateCard = ({
 
   const handleSubmit = () => {};
 
-  console.log('activeMainTab', activeMainTab);
-  console.log('activeNestedTab', activeNestedTab.label);
+  // console.log('activeMainTab', activeMainTab);
+  // console.log('activeNestedTab', activeNestedTab.label);
 
   return (
     <div>
@@ -82,7 +84,9 @@ const CandidateCard = ({
                   <button
                     type="button"
                     className="btn btn-outline-primary me-5"
-                    onClick={() => handleInterviewFeedbackModalOpen()}
+                    onClick={() =>
+                      handleInterviewFeedbackModalOpen(content_card?.name)
+                    }
                   >
                     Add Interview Feedback
                   </button>
@@ -127,6 +131,7 @@ const CandidateCard = ({
           show={showInterviewFeedbackModal}
           handleClose={handleInterviewFeedbackModalClose}
           activeNestedTabLabel={activeNestedTab.label}
+          interviewID={saveInterviewRef.current}
           skillsList={skillsList}
         />
       )}

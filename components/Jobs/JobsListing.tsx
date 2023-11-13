@@ -1,5 +1,6 @@
 import JobsCard from '@/cards/jobs-card';
 import useJobsListingHook from '@/hooks/jobs-hook';
+import NoData from '../NoData';
 
 const JobsListing = () => {
   const { jobsList } = useJobsListingHook();

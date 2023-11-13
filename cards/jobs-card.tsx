@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import style from '../styles/jobs-card.module.css';
+import { useState, useEffect } from 'react';
 
 const JobsCard = ({
   job_title,

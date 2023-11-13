@@ -1,24 +1,25 @@
-import { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import LoginAPI from "@/services/api/auth/login";
-import styles from "../styles/Login.module.css";
-import { useRouter } from "next/router";
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { storeToken } from "@/store/slices/token-slice";
+import { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import LoginAPI from '@/services/api/auth/login';
+import styles from '../styles/Login.module.css';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { storeToken } from '@/store/slices/token-slice';
+import { storeMailID } from '@/store/slices/store-user-id';
 const Login = () => {
   const [passwordHidden, setPasswordHidden] = useState(true);
   const router = useRouter();
   const dispatch = useDispatch();
   const LoginValidationSchema = Yup.object().shape({
-    usr: Yup.string().email("Invalid email").required("Email is required"),
+    usr: Yup.string().email('Invalid email').required('Email is required'),
     pwd: Yup.string()
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+        'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character'
       )
-      .required("Password is required"),
+      .required('Password is required'),
   });
 
   const handlePassword = (e: any) => {
@@ -28,18 +29,19 @@ const Login = () => {
 
   const handleSubmit = async (values: any) => {
     // console.log("login creds", values);
+    dispatch(storeMailID(values.usr));
     const loginUser = await LoginAPI(values);
     // console.log("login creds success", loginUser);
-    if (loginUser?.data?.message?.msg === "success") {
-      toast.success("Login Successful", {
+    if (loginUser?.data?.message?.msg === 'success') {
+      toast.success('Login Successful', {
         autoClose: 3000,
         // Close the notification after 3 seconds
       });
       dispatch(storeToken(loginUser.data.message.data.access_token));
-      router.push("/candidates");
+      router.push('/candidates');
     } else {
       toast.error(
-        "Login failed. Please check your credentials and try again.",
+        'Login failed. Please check your credentials and try again.',
         {
           autoClose: 5000, // Close the notification after 5 seconds
         }
@@ -59,8 +61,8 @@ const Login = () => {
             </div>
             <Formik
               initialValues={{
-                usr: "",
-                pwd: "",
+                usr: '',
+                pwd: '',
               }}
               validationSchema={LoginValidationSchema}
               onSubmit={(values) => {
@@ -92,7 +94,7 @@ const Login = () => {
                   <div className="position-relative">
                     <div className="d-flex justify-content-center align-items-center position-relative">
                       <Field
-                        type={passwordHidden ? "password" : "text"}
+                        type={passwordHidden ? 'password' : 'text'}
                         className="form-control"
                         name="pwd"
                       />
