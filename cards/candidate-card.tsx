@@ -20,7 +20,10 @@ const CandidateCard = ({
     useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = (email: any) => {
+    saveCandidateEmailRef.current = email;
+    setShow(true);
+  };
 
   const saveCandidateEmailRef = useRef(null);
   const saveInterviewRef = useRef(null);
@@ -58,7 +61,7 @@ const CandidateCard = ({
                   <div className="">
                     <p
                       className={`${styles.card_content} ${styles.f6}`}
-                      onClick={handleShow}
+                      onClick={() => handleShow(content_card?.email_id)}
                     >
                       {content_card?.applicant_name}
                     </p>
@@ -110,11 +113,16 @@ const CandidateCard = ({
           </>
         );
       })}
-      <OffCanvasComponent
-        show={show}
-        handleClose={handleClose}
-        handleSubmit={handleSubmit}
-      />
+      {show && (
+        <OffCanvasComponent
+          show={show}
+          token={token}
+          candidateMailID={saveCandidateEmailRef.current}
+          handleClose={handleClose}
+          handleSubmit={handleSubmit}
+        />
+      )}
+
       {showInterviewModal && (
         <InterviewModal
           token={token}
