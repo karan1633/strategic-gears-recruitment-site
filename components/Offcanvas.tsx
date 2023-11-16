@@ -85,9 +85,9 @@ const OffCanvasComponent = ({
                   </Row>
                 </Form>
               </div>
-              <div className={`candidate-interview-details-main`}>
+              <div className={`candidate-interview-details-main mt-1`}>
                 <div className={`candidate-interview-details-heading-text`}>
-                  <h3>Interview Details</h3>
+                  <h5 className="px-3">Interview Details</h5>
                 </div>
                 {candidateDetail?.interview_details?.length > 0 ? (
                   <div className={`candidate-interview-details-body px-3`}>
@@ -99,7 +99,7 @@ const OffCanvasComponent = ({
                               <div
                                 className={`${styles.interview_heading} border px-3 py-1`}
                               >
-                                <h4>{interview.scheduled_history}</h4>
+                                <h6>{interview.scheduled_history}</h6>
                               </div>
                               <div className={`interview-detail-main px-3 `}>
                                 <table className="table">
