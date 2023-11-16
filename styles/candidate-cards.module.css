@@ -1,0 +1,15 @@
+.card_content {
+  font-size: 1em !important;
+  margin: 0px !important;
+}
+/* .card_p {
+  font-size: 0.5em !important;
+} */
+.f6 {
+  font-weight: 600;
+  color: #000 !important;
+}
+.f7 {
+  font-weight: 700;
+  color: #000 !important;
+}

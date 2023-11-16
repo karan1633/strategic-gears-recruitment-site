@@ -1,0 +1,22 @@
+.login_wrapper {
+  border: 1px solid black !important;
+  border-radius: 5px;
+  margin: 100px auto 50px auto;
+  max-width: 500px;
+  width: 95%;
+  padding: 25px;
+}
+.custom_toast {
+  top: 80px;
+}
+.error_message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.password_icon {
+  position: absolute;
+  background-color: #fff;
+  border: none;
+  right: 5px;
+}
