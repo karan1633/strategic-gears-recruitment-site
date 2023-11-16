@@ -16,6 +16,9 @@ const storeUserMailID = createSlice({
       console.log('email', action.payload);
       state.mail_id = action.payload;
     },
+    clearMailID(state: any) {
+      state.mail_id = '';
+    },
   },
 });
 
@@ -23,5 +26,5 @@ const storeUserMailID = createSlice({
 export const get_mail = (state: RootState) => state.storeUserMailIDReducer;
 
 // Export the actions and reducer
-export const { storeMailID } = storeUserMailID.actions; // Add any actions you want to export
+export const { storeMailID, clearMailID } = storeUserMailID.actions; // Add any actions you want to export
 export default storeUserMailID.reducer;

@@ -6,7 +6,11 @@ import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import LogoutAPI from '@/services/api/auth/logout';
+import { clearToken } from '@/store/slices/token-slice';
+import { useDispatch } from 'react-redux';
+import { clearMailID } from '@/store/slices/store-user-id';
 const Navbar = () => {
+  const dispatch = useDispatch();
   const imageStyle = {
     width: '180px',
     height: '62px !important',
@@ -23,6 +27,8 @@ const Navbar = () => {
   const handleLogout = async () => {
     const logoutUser = await LogoutAPI();
     if (logoutUser?.status === 200) {
+      dispatch(clearToken());
+      dispatch(clearMailID());
       router.push('/login');
     } else {
       toast.error('Something went wrong. Please try back in sometime', {
