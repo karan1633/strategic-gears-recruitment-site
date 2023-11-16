@@ -32,7 +32,7 @@ const CandidatesListing = () => {
     setUpdateList(updateList + 1);
   };
 
-  console.log('candidates list', candidatesList);
+  // console.log('candidates list', candidatesList);
   return (
     <>
       {candidatesList?.length > 0 ? (
