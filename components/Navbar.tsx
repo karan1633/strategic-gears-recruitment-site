@@ -3,7 +3,7 @@ import Link from 'next/link';
 import navStyles from '../styles/Navbar.module.css';
 import { useRouter } from 'next/router';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 import LogoutAPI from '@/services/api/auth/logout';
 import { clearToken } from '@/store/slices/token-slice';
@@ -69,7 +69,9 @@ const Navbar = () => {
             <Link
               href="/candidates"
               className={`nav-link mx-2 ${
-                activeTabIndex === 0 ? navStyles.active : navStyles.inactive
+                router.pathname === '/candidates'
+                  ? navStyles.active
+                  : navStyles.inactive
               }`}
               onClick={() => handleChangeOfTabIndex(0)}
             >
@@ -78,7 +80,9 @@ const Navbar = () => {
             <Link
               href="/jobs"
               className={`nav-link mx-2 ${
-                activeTabIndex === 1 ? navStyles.active : navStyles.inactive
+                router.pathname === '/jobs'
+                  ? navStyles.active
+                  : navStyles.inactive
               }`}
               onClick={() => handleChangeOfTabIndex(1)}
             >
