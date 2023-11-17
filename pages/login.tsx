@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Field, Form as FormikFrom, ErrorMessage } from 'formik';
+import { Form, Button } from 'react-bootstrap';
 import * as Yup from 'yup';
 import LoginAPI from '@/services/api/auth/login';
 import styles from '../styles/Login.module.css';
@@ -27,7 +28,7 @@ const Login = () => {
     setPasswordHidden(!passwordHidden);
   };
 
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async (values?: any) => {
     // console.log("login creds", values);
     dispatch(storeMailID(values.usr));
     const loginUser = await LoginAPI(values);
@@ -65,67 +66,85 @@ const Login = () => {
                 pwd: '',
               }}
               validationSchema={LoginValidationSchema}
-              onSubmit={(values) => {
+              onSubmit={(values: any) => {
                 handleSubmit(values);
               }}
             >
-              <Form>
-                <div className="form-group">
-                  <label
-                    htmlFor="email"
-                    className="font-size-4 text-black-2 font-weight-semibold line-height-reset"
-                  >
-                    E-mail
-                  </label>
-                  <Field type="email" className="form-control" name="usr" />
-                  <ErrorMessage
-                    name="usr"
-                    component="div"
-                    className={`${styles.error_message}`}
-                  />
-                </div>
-                <div className="form-group">
-                  <label
-                    htmlFor="password"
-                    className="font-size-4 text-black-2 font-weight-semibold line-height-reset"
-                  >
-                    Password
-                  </label>
-                  <div className="position-relative">
-                    <div className="d-flex justify-content-center align-items-center position-relative">
-                      <Field
-                        type={passwordHidden ? 'password' : 'text'}
-                        className="form-control"
-                        name="pwd"
-                      />
-                      <button
-                        className={`${styles.password_icon}`}
-                        onClick={(e: any) => handlePassword(e)}
-                      >
-                        {passwordHidden ? (
-                          <i className="fas fa-eye"></i>
-                        ) : (
-                          <i className="fas fa-eye-slash"></i>
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                  <ErrorMessage
-                    name="pwd"
-                    component="div"
-                    className={`${styles.error_message}`}
-                  />
-                </div>
+              {({ handleSubmit }) => (
+                <Form
+                  onKeyDown={(e: React.KeyboardEvent<HTMLFormElement>) =>
+                    e.key === 'Enter' && handleSubmit()
+                  }
+                  onSubmit={handleSubmit}
+                >
+                  <div className="form-group">
+                    <label
+                      htmlFor="email"
+                      className="font-size-4 text-black-2 font-weight-semibold line-height-reset"
+                    >
+                      E-mail
+                    </label>
 
-                <div className="form-group mb-8 text-center">
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn-medium w-50 rounded-5 text-uppercase"
-                  >
-                    Log in
-                  </button>
-                </div>
-              </Form>
+                    <Field
+                      type="email"
+                      className="form-control"
+                      name="usr"
+                      onKeyDown={(e: any) =>
+                        e.key === 'Enter' && e.preventDefault()
+                      }
+                    />
+                    <ErrorMessage
+                      name="usr"
+                      component="div"
+                      className={`${styles.error_message}`}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="password"
+                      className="font-size-4 text-black-2 font-weight-semibold line-height-reset"
+                    >
+                      Password
+                    </label>
+                    <div className="position-relative">
+                      <div className="d-flex justify-content-center align-items-center position-relative">
+                        <Field
+                          type={passwordHidden ? 'password' : 'text'}
+                          className="form-control"
+                          name="pwd"
+                          onKeyDown={(e: any) =>
+                            e.key === 'Enter' && e.preventDefault()
+                          }
+                        />
+                        <button
+                          className={`${styles.password_icon}`}
+                          onClick={(e: any) => handlePassword(e)}
+                        >
+                          {passwordHidden ? (
+                            <i className="fas fa-eye"></i>
+                          ) : (
+                            <i className="fas fa-eye-slash"></i>
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                    <ErrorMessage
+                      name="pwd"
+                      component="div"
+                      className={`${styles.error_message}`}
+                    />
+                  </div>
+
+                  <div className="form-group mb-8 text-center">
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-medium w-50 rounded-5 text-uppercase"
+                    >
+                      Log in
+                    </button>
+                  </div>
+                </Form>
+              )}
             </Formik>
           </div>
         </div>
