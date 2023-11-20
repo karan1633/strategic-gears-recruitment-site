@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { InterviewData } from '../datasets/interview-dataset';
 import styles from '../styles/Candidate-Detail.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import CandidateDetailAPI from '@/services/api/candidate-detail-api';
 const OffCanvasComponent = ({
   show,
@@ -14,6 +14,7 @@ const OffCanvasComponent = ({
   handleSubmit,
 }: any) => {
   const [candidateDetail, setCandidateDetail] = useState<any>({});
+  const [isExpanded, setIsExpanded] = useState<any>(false);
   const getCandidateData = async () => {
     const getCandidateDetail = await CandidateDetailAPI(token, candidateMailID);
     console.log('candidate detail', getCandidateDetail);
@@ -118,12 +119,29 @@ const OffCanvasComponent = ({
                                           <>
                                             <tr key={idx}>
                                               <td className="">
+                                                {/* {isExpanded ? (
+                                                  <i
+                                                    className="fas fa-minus"
+                                                    data-toggle="collapse"
+                                                    data-target={`#${interview_stage.label}-feedback-data`}
+                                                    aria-expanded="false"
+                                                    aria-controls={`#${interview_stage.label}-feedback-data`}
+                                                    onClick={() =>
+                                                      setIsExpanded(true)
+                                                    }
+                                                  ></i>
+                                                ) : (
+                                                  
+                                                )} */}
                                                 <i
                                                   className="fas fa-plus"
                                                   data-toggle="collapse"
                                                   data-target={`#${interview_stage.label}-feedback-data`}
                                                   aria-expanded="false"
                                                   aria-controls={`#${interview_stage.label}-feedback-data`}
+                                                  // onClick={() =>
+                                                  //   setIsExpanded(false)
+                                                  // }
                                                 ></i>
                                                 <span className="ms-2">
                                                   {
@@ -140,7 +158,7 @@ const OffCanvasComponent = ({
                                             <tr>
                                               <td colSpan={4}>
                                                 <table
-                                                  className="table collapse "
+                                                  className="table collapse"
                                                   id={`${interview_stage.label}-feedback-data`}
                                                 >
                                                   <thead>
