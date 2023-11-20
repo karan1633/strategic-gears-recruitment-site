@@ -135,8 +135,8 @@ const OffCanvasComponent = ({
                                                 )} */}
                                                 <i
                                                   className="fas fa-plus"
-                                                  data-toggle="collapse"
-                                                  data-target={`#${interview_stage.label}-feedback-data`}
+                                                  data-bs-toggle="collapse"
+                                                  data-bs-target={`#${interview_stage.label}-feedback-data`}
                                                   aria-expanded="false"
                                                   aria-controls={`#${interview_stage.label}-feedback-data`}
                                                   // onClick={() =>

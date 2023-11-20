@@ -62,7 +62,7 @@ const CandidatesListing = () => {
                       onClick={() => handleMainTabIndex(index)}
                     >
                       {tab.main_tab}{' '}
-                      <span className="badge badge-primary mx-2">
+                      <span className="badge text-bg-primary mx-2">
                         {tab.count}
                       </span>
                     </button>
