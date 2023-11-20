@@ -66,7 +66,7 @@ const CandidateCard = ({
                       {content_card?.applicant_name}
                     </p>
                   </div>
-                  <div className="ml-3">
+                  <div className="ms-3">
                     <p className={`${styles.card_content}`}>
                       {content_card?.designation}
                     </p>
