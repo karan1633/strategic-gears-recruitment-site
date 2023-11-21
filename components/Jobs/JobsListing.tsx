@@ -29,6 +29,7 @@ const JobsListing = () => {
             return (
               <div key={index} className="mt-3">
                 <JobsCard
+                  job_name={job?.job_name}
                   job_title={job?.job_title}
                   department={job?.department}
                   no_of_openings={job?.no_of_openings}

@@ -3,6 +3,7 @@ import style from '../styles/jobs-card.module.css';
 import { useState, useEffect } from 'react';
 
 const JobsCard = ({
+  job_name,
   job_title,
   department,
   no_of_openings,
@@ -19,7 +20,7 @@ const JobsCard = ({
           <div className="">
             <div className="">
               <Link
-                href={`/candidates?filter=${job_title}`}
+                href={`/candidates?filter=${job_name}`}
                 // target="_blank"
                 className={` ${style.title} ${style.job_card_main}`}
               >
