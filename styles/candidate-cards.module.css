@@ -1,5 +1,5 @@
 .card_content {
-  font-size: 1em !important;
+  font-size: 16px !important;
   margin: 0px !important;
 }
 /* .card_p {
@@ -12,4 +12,24 @@
 .f7 {
   font-weight: 700;
   color: #000 !important;
+}
+.info_icon {
+  color: #0d6efd;
+}
+.btn_fs {
+  font-size: 13.5px !important;
+  padding: 5px 35px !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .btn_mob {
+    font-size: 12px;
+    /* padding: 0px !important; */
+  }
+  .candidate_mob {
+    width: 100%;
+  }
+  .applicant_name_mob {
+    /* border: 2px solid red !important; */
+  }
 }

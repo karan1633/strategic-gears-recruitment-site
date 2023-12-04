@@ -1,0 +1,44 @@
+.modal_heading {
+  /* border: 2px solid red; */
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: -10px !important;
+}
+.close_btn {
+  color: #0d6efd;
+}
+.modal_subtitle {
+  color: black !important;
+  font-weight: bold !important;
+}
+
+.icon_close_size {
+  font-size: 4px !important;
+}
+.input_label {
+  color: black !important;
+  font-weight: 600 !important;
+  font-size: 15px;
+}
+.text_danger {
+  font-size: 12px;
+}
+.btn {
+  font-size: 13px;
+  padding: 4px 30px;
+}
+.modal_close_btn {
+  background-color: white;
+  color: #0d6efd;
+  border: 1px solid #0d6efd;
+}
+
+@media only screen and (max-width: 600px) {
+  .modal_footer_wrapper {
+    margin: 0px !important;
+    padding: 15px 10px !important;
+  }
+  .date_wrapper {
+    margin-top: 2px;
+  }
+}

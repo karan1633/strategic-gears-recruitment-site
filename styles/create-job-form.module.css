@@ -1,0 +1,36 @@
+@media only screen and (max-width: 600px) {
+  .btn_job_form {
+    font-size: 9.5px;
+    padding: 10px 8px;
+    /* margin-top: 7px; */
+  }
+  .btn_job_add {
+    font-size: 9.2px;
+    padding: 2px 8px;
+    /* margin-top: 7px; */
+  }
+
+  .submit_btn_wrapper {
+    /* border: 2px solid red; */
+    position: absolute !important;
+    bottom: -300px !important;
+    display: flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: auto !important;
+    display: block !important;
+    padding-left: 140px !important;
+    /* padding-bottom: 40px; */
+  }
+  .submit_btn {
+    /* bottom: -800px !important; */
+    /* margin-top: -300px; */
+    /* position: fixed; */
+  }
+  .input_field_mob {
+    width: 1200px;
+  }
+}
+.submit_btn_mob {
+  width: 15%
+}

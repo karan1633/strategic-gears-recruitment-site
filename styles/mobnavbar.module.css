@@ -1,0 +1,48 @@
+/* MobNavbar.module.css */
+.mobNavbar {
+  /* display: flex !important;
+    justify-content: start !important; */
+}
+
+.hamburger {
+}
+
+.centeredLogo {
+  text-align: center;
+}
+
+.create_btn {
+  background-color: white;
+  border: 1px solid #0d6efd;
+  color: #0d6efd;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.nav_item {
+  color: black !important;
+  /* border: 2px solid red; */
+  padding: 10px 10px;
+  font-size: 16px !important;
+  /* font-weight: bold; */
+}
+.nav_link {
+  color: black !important;
+}
+
+.logout_wrapper {
+  padding-top: 40px;
+  padding-left: 10px;
+}
+
+.active {
+  border-bottom: 2px solid #005487 !important;
+  color: #005487 !important;
+}
+
+.nav_item:hover {
+  color: #005487 !important;
+}
+.nav_link:hover {
+  color: #005487 !important;
+}

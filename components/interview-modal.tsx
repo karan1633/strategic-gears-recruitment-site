@@ -8,6 +8,8 @@ import SetInterviewAPI from '@/services/api/set-interview-api';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import CandidatesListAPI from '@/services/api/candidates-list-api';
+import styles from '../styles/interview-module.module.css';
+import CancelIcon from '@mui/icons-material/Cancel';
 function InterviewModal({
   token,
   show,
@@ -80,14 +82,29 @@ function InterviewModal({
   return (
     <>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Schedule an Interview</Modal.Title>
+        {/* <Modal.Header closeButton className='mb-2' >
+          <Modal.Title className={`text-center mt-1`}>Schedule an Interview</Modal.Title>
+        </Modal.Header> */}
+        <Modal.Header
+          onClick={handleClose}
+          className={`d-flex justify-content-end m-0 p-0 pe-3 pt-3`}
+        >
+          <span className={styles.close_btn}>
+            <CancelIcon />
+          </span>
         </Modal.Header>
+        <Modal.Title
+          className={`text-center m-0 p-0 color-black ${styles.modal_heading}`}
+        >
+          Schedule an Interview
+        </Modal.Title>
         <Modal.Body>
           <Form>
             <Row className="mb-3">
-              <Form.Group as={Col} md="12">
-                <Form.Label>Interview Round</Form.Label>
+              <Form.Group as={Col} md="12" className="mt-3">
+                <Form.Label className={`color-black ${styles.modal_subtitle}`}>
+                  Interview Round
+                </Form.Label>
                 <Form.Select
                   aria-label="Default select example"
                   onChange={(e) =>
@@ -105,40 +122,84 @@ function InterviewModal({
                 </Form.Select>
               </Form.Group>
               <Form.Group as={Col} md="4" className="my-2">
-                <Form.Label>Date</Form.Label>
-                <div>
+                <Form.Label
+                  className={`text-center  w-100 ${styles.input_label}`}
+                >
+                  Date
+                </Form.Label>
+                {/* <div>
                   <input
                     type="date"
                     onChange={(e) =>
                       handleValueChange('scheduled_on', e.target.value)
                     }
                   />
+                </div> */}
+                <div
+                  className={`custom-date-input-container d-flex align-items-center ${styles.date_wrapper}`}
+                >
+                  <input
+                    type="date"
+                    className="custom-date-input ps-2 py-1"
+                    onChange={(e) =>
+                      handleValueChange('scheduled_on', e.target.value)
+                    }
+                  />
+                  {/* <span
+                    className={`close-icon-dr ${styles.close_btn} ${styles.icon_close_size}`}
+                  >
+                    <CancelIcon style={{ height: '16px' }} />
+                  </span> */}
                 </div>
               </Form.Group>
               <Form.Group as={Col} md="4" className="my-2">
-                <Form.Label>From Time</Form.Label>
-                <div>
+                <Form.Label
+                  className={`text-center  w-100 ${styles.input_label}`}
+                >
+                  From Time
+                </Form.Label>
+                <div className="custom-date-input-container d-flex align-items-center">
                   <input
                     type="time"
+                    className="custom-time-input ps-2 py-1"
                     onChange={(e) =>
                       handleValueChange('from_time', e.target.value)
                     }
                   />
+                  {/* <span
+                    className={`close-icon-dr close-icon-time ${styles.close_btn} ${styles.icon_close_size}`}
+                  >
+                    <CancelIcon style={{ height: '16px' }} />
+                  </span> */}
                 </div>
               </Form.Group>
               <Form.Group as={Col} md="4" className="my-2">
-                <Form.Label>To Time</Form.Label>
-                <div>
+                <Form.Label
+                  className={`text-center  w-100 ${styles.input_label}`}
+                >
+                  To Time
+                </Form.Label>
+                <div
+                  className={`custom-date-input-container d-flex align-items-center ${styles.date_wrapper}`}
+                >
                   <input
                     type="time"
+                    className="custom-time-input ps-2 py-1"
                     onChange={(e) =>
                       handleValueChange('to_time', e.target.value)
                     }
                   />
+                  {/* <span
+                    className={`close-icon-dr close-icon-time ${styles.close_btn} ${styles.icon_close_size}`}
+                  >
+                    <CancelIcon style={{ height: '16px' }} />
+                  </span> */}
                 </div>
               </Form.Group>
-              <Form.Group as={Col} md="12" className="my-2">
-                <p className="mb-2">Interviewers List</p>
+              <Form.Group as={Col} md="12" className="my-3">
+                <p className={`mb-2 ${styles.modal_subtitle}`}>
+                  Interviewers List
+                </p>
 
                 {interviewData?.interviewers?.length > 0 ? (
                   <table className="table table-bordered">
@@ -172,17 +233,29 @@ function InterviewModal({
                     </tbody>
                   </table>
                 ) : (
-                  <p className="text-danger">No Interviewers Found</p>
+                  <p className={`text-danger text-end ${styles.text_danger}`}>
+                    * No Interviewers Found
+                  </p>
                 )}
               </Form.Group>
             </Row>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+        <Modal.Footer
+          className={`d-flex justify-content-between px-5 mx-5 ${styles.modal_footer_wrapper}`}
+        >
+          <Button
+            variant="secondary"
+            onClick={handleClose}
+            className={`${styles.modal_close_btn} ${styles.btn}`}
+          >
             Close
           </Button>
-          <Button variant="primary" onClick={handleScheduleInterview}>
+          <Button
+            variant="primary"
+            onClick={handleScheduleInterview}
+            className={`${styles.modal_save_btn} ${styles.btn}`}
+          >
             Save Changes
           </Button>
         </Modal.Footer>

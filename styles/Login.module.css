@@ -1,5 +1,5 @@
 .login_wrapper {
-  border: 1px solid black !important;
+  /* border: 1px solid black !important; */
   border-radius: 5px;
   margin: 100px auto 50px auto;
   max-width: 500px;
@@ -25,7 +25,6 @@
 }
 .password_icon {
   position: absolute;
-  background-color: #fff;
   border: none;
   right: 5px;
 }

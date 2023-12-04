@@ -98,6 +98,12 @@
   font-size: 18px;
   color: #1292ee;
 }
+.logout_wrapper {
+  /* border: 2px solid red; */
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 30px;
+}
 @media only screen and (max-width: 1024px) {
   .nested_tabs_container {
     /* width: 100px; */
@@ -129,3 +135,16 @@
     width: 199px;
   }
 } */
+
+@media only screen and (max-width: 600px) {
+  .logout_wrapper {
+    display: none;
+  }
+  .jobposting_filter {
+    display: none;
+  }
+  .nav_tab_mob {
+    width: 170px !important;
+    font-size: 18px !important;
+  }
+}

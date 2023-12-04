@@ -15,7 +15,7 @@ const useCandidatesHook = () => {
   const { token }: any = useSelector(get_access_token);
 
   const [updateList, setUpdateList] = useState(0);
-  console.log('job filter ', filter);
+  // console.log('job filter ', filter);
 
   const getCandidatesList = async () => {
     const candidatesList = await CandidatesListAPI(token, filter);
@@ -27,7 +27,7 @@ const useCandidatesHook = () => {
     } else {
       setCandidatesList([]);
     }
-    console.log('candidates list', candidatesList);
+    // console.log('candidates list', candidatesList);
   };
 
   const getInterviewRoundsList = async () => {
@@ -42,18 +42,17 @@ const useCandidatesHook = () => {
     }
   };
 
-  const getSkillsList = async () =>
-  {
+  const getSkillsList = async () => {
     const skillsListData = await SkillsListAPI(token);
-    if(skillsListData?.status === 200 && skillsListData?.data?.message?.msg === 'success')
-    {
+    if (
+      skillsListData?.status === 200 &&
+      skillsListData?.data?.message?.msg === 'success'
+    ) {
       setSkillsList([...skillsListData?.data?.message?.data]);
-    } 
-    else
-    {
+    } else {
       setSkillsList([]);
     }
-  }
+  };
 
   useEffect(() => {
     getCandidatesList();
