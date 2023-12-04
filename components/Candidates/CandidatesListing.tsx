@@ -49,7 +49,7 @@ const CandidatesListing = () => {
                         activeMainTab === index
                           ? styles.main_tab_active
                           : styles.main_tab_stale
-                      }`}
+                      } ${styles.nav_tab_mob}`}
                       id={`${tab.main_tab}-tab`}
                       data-toggle="tab"
                       data-target={`#${tab.main_tab}`}

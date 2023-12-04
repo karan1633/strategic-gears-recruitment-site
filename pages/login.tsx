@@ -56,9 +56,9 @@ const Login = () => {
     >
       <div className="row">
         <div className="col-lg-12 col-md-12">
-          <div className="bg-white-2 h-100 p-5">
+          <div className="bg-white-2 h-100 p-3">
             <div className="mt-2 mb-2 text-center">
-              <h5>Log In</h5>
+              <h4 className="font-weight-bold">LOG IN</h4>
             </div>
             <Formik
               initialValues={{
@@ -77,10 +77,10 @@ const Login = () => {
                   }
                   onSubmit={handleSubmit}
                 >
-                  <div className="form-group">
+                  <div className="form-group mt-2">
                     <label
                       htmlFor="email"
-                      className="font-size-4 text-black-2 font-weight-semibold line-height-reset"
+                      className="font-size-4 text-black-2 font-weight-semibold line-height-reset font-weight-bold"
                     >
                       E-mail
                     </label>
@@ -99,10 +99,10 @@ const Login = () => {
                       className={`${styles.error_message}`}
                     />
                   </div>
-                  <div className="form-group">
+                  <div className="form-group mt-3">
                     <label
                       htmlFor="password"
-                      className="font-size-4 text-black-2 font-weight-semibold line-height-reset"
+                      className="font-size-4 text-black-2 font-weight-semibold line-height-reset font-weight-bold"
                     >
                       Password
                     </label>
@@ -135,7 +135,7 @@ const Login = () => {
                     />
                   </div>
 
-                  <div className="form-group mb-8 text-center">
+                  <div className="form-group mb-8 text- mt-4 text-center">
                     <button
                       type="submit"
                       className="btn btn-primary btn-medium w-50 rounded-5 text-uppercase"

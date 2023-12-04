@@ -19,3 +19,28 @@
 .job_card_main {
   cursor: pointer;
 }
+
+.job_title {
+  font-size: 16px !important;
+}
+.border_bottom {
+  border-bottom: 1px solid gray;
+}
+.info_icon {
+  color: #0d6efd;
+  font-size: 12px !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+.red_text {
+  color: red;
+}
+.blue_text {
+  color: #0d6efd;
+}
+
+@media only screen and (max-width: 600px) {
+  .opportunities_wrapper {
+    padding-top: 5px;
+  }
+}
